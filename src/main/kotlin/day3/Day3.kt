@@ -15,7 +15,8 @@ class Day3 {
     ): Long {
         return rows.indices
             .filter { it % rowStep == 0 }
-            .mapIndexed { index, it -> it to (index * colStep) % columnsCount }.sumOf { (row, col) ->
+            .mapIndexed { index, it -> it to (index * colStep) % columnsCount }
+            .sumOf { (row, col) ->
                 if (rows[row][col] == '#')
                     1L
                 else
