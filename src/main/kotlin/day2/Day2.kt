@@ -14,6 +14,6 @@ class Day2 {
             val first = pass[firstS.toInt() - 1]
             val second = pass[secondS.toInt() - 1]
             val c = cS.first()
-            if ((first == c).xor(second == c)) 1 else 0
+            if ((first == c) xor (second == c)) 1 else 0
         }.sum()
 }
