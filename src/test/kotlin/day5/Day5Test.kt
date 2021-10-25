@@ -39,4 +39,15 @@ class Day5Test {
             Day5().highest(input)
         )
     }
+
+    @Test
+    fun task2Test() {
+        val input = File("src/test/resources/task1Day5.txt")
+            .readLines()
+
+        assertEquals(
+            832,
+            Day5().mySeat(input)
+        )
+    }
 }

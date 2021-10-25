@@ -12,4 +12,7 @@ class Day5 {
 
     fun highest(seatsEncoded: List<String>) =
         seatsEncoded.maxOf { seat(it) }
+
+    fun mySeat(seatsEncoded: List<String>) =
+        seatsEncoded.map { seat(it) }.sorted().windowed(2, 1).first { it[1] - it[0] > 1 }[0] + 1
 }
