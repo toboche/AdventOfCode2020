@@ -27,4 +27,22 @@ class Day6 {
             }
     }
 
+    fun task2(input: File): Int {
+        val groups = input.readText()
+            .split("\n\n")
+            .map { it.split("\n") }
+
+
+        return groups.sumOf { group ->
+            val answers = IntArray(26)
+            group.map {
+                it.toCharArray().forEach {
+                    answers[it.code - aCode] += 1
+                }
+            }
+            answers.count { it == group.size }
+        }
+
+    }
+
 }
