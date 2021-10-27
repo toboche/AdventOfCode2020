@@ -33,4 +33,28 @@ class Day7 {
         }
         return visited.size
     }
+
+    fun task2(input: File, lookupParent: String): Int {
+        val parentsToAllChildren = mutableMapOf<String, MutableList<Pair<String, Int>>>() //child bag, parentBags
+
+        input.readLines()
+            .forEach {
+                val (parent, containedString) = it.split(" bags contain ")
+                val children = containedString.split(" bags, ", " bags.", " bag, ", " bag.")
+                    .filterNot { it == "" || it == "no other" }
+                    .map { it.drop(2) to it[0].digitToInt() }
+                if (parentsToAllChildren.contains(parent).not()) {
+                    parentsToAllChildren[parent] = mutableListOf()
+                }
+                val parentToAllChildren = parentsToAllChildren[parent]!!
+                parentToAllChildren.addAll(children)
+            }
+
+        return childrenCost(lookupParent, parentsToAllChildren) - 1
+    }
+
+    fun childrenCost(parent: String, parentsToAllChildren: MutableMap<String, MutableList<Pair<String, Int>>>): Int =
+        parentsToAllChildren[parent]!!.sumOf {
+            it.second * childrenCost(it.first, parentsToAllChildren)
+        } + 1
 }
