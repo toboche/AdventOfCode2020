@@ -44,7 +44,7 @@ class Day8Test {
             .readLines()
 
         assertEquals(
-            8,
+            509,
             Day8().task2(input)
         )
     }
