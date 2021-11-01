@@ -34,4 +34,31 @@ class Day10Test {
             Day10().task1(input)
         )
     }
+
+    @Test
+    fun example1Task2est() {
+        val input = File("src/test/resources/exampleDay10.txt")
+        assertEquals(
+            8,
+            Day10().task2(input)
+        )
+    }
+
+    @Test
+    fun example2Task2Test() {
+        val input = File("src/test/resources/example2Day10.txt")
+        assertEquals(
+            19208,
+            Day10().task2(input)
+        )
+    }
+
+    @Test
+    fun task2Test() {
+        val input = File("src/test/resources/task1Day10.txt")
+        assertEquals(
+            5289227976704,
+            Day10().task2(input)
+        )
+    }
 }
