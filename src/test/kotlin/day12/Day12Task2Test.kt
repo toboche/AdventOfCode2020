@@ -20,4 +20,14 @@ class Day12Task2Test {
                 "N3"))
         )
     }
+
+    @Test
+    fun step3() {
+        assertEquals(
+            Day12Task2.Position(170, 38, 90, 10, 4),
+            Day12Task2().calculateFinalPosition(listOf("F10",
+                "N3",
+                "F7"))
+        )
+    }
 }
