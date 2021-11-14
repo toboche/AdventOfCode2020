@@ -37,7 +37,7 @@ class Day12Task2 {
         dy: Int,
         value: Int,
     ) : Action({ position ->
-        position.copy(x = position.x + dx * value, y = position.y + dy * value)
+        position.copy(waypointX = position.waypointX + dx * value, waypointY = position.waypointY + dy * value)
     }) {
         companion object {
             fun N(valueS: Int) = MoveWaypoint(0, 1, valueS)

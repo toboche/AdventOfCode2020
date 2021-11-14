@@ -11,4 +11,13 @@ class Day12Task2Test {
             Day12Task2().calculateFinalPosition(listOf("F10"))
         )
     }
+
+    @Test
+    fun waypointMovementWorks() {
+        assertEquals(
+            Day12Task2.Position(100, 10, 90, 10, 4),
+            Day12Task2().calculateFinalPosition(listOf("F10",
+                "N3"))
+        )
+    }
 }
