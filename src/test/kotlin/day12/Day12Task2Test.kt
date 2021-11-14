@@ -5,7 +5,7 @@ import kotlin.test.assertEquals
 
 class Day12Task2Test {
     @Test
-    fun forwardWorks() {
+    fun forward() {
         assertEquals(
             Day12Task2.Position(100, 10, 90, 10, 1),
             Day12Task2().calculateFinalPosition(listOf("F10"))
@@ -13,7 +13,7 @@ class Day12Task2Test {
     }
 
     @Test
-    fun waypointMovementWorks() {
+    fun waypointMovement() {
         assertEquals(
             Day12Task2.Position(100, 10, 90, 10, 4),
             Day12Task2().calculateFinalPosition(listOf("F10",
@@ -28,6 +28,17 @@ class Day12Task2Test {
             Day12Task2().calculateFinalPosition(listOf("F10",
                 "N3",
                 "F7"))
+        )
+    }
+
+    @Test
+    fun step4WithRotation() {
+        assertEquals(
+            Day12Task2.Position(170, 38, 90, 4, -10),
+            Day12Task2().calculateFinalPosition(listOf("F10",
+                "N3",
+                "F7",
+                "R90"))
         )
     }
 }

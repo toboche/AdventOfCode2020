@@ -47,7 +47,16 @@ class Day12Task2 {
         }
     }
 
-    class RotateWaypoint(degrees: Int) : Action({ position -> position.copy(dir = position.dir + degrees) })
+    class RotateWaypoint(degrees: Int) : Action(
+        { position ->
+            when (degrees) {
+                90 -> position.copy(waypointX = position.waypointY, waypointY = -position.waypointX)
+                180 -> position.copy(waypointX = -position.waypointX, waypointY = -position.waypointY)
+                270 -> position.copy(waypointX = -position.waypointY, waypointY = position.waypointX)
+                else -> position
+            }
+        }
+    )
 
     class MoveTowardsWaypoint(value: Int) : Action({ position ->
         val dx = position.waypointX * value
