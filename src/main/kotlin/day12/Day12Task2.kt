@@ -24,7 +24,7 @@ class Day12Task2 {
             else -> throw Exception()
         }
     }
-        .fold(Position(0, 0, 90, 10, 1)) { previousPosition, action ->
+        .fold(Position(0, 0, 10, 1)) { previousPosition, action ->
             action.execute(previousPosition)
         }
 
@@ -50,10 +50,10 @@ class Day12Task2 {
     class RotateWaypoint(degrees: Int) : Action(
         { position ->
             when (degrees) {
-                90 -> position.copy(waypointX = position.waypointY, waypointY = -position.waypointX)
-                180 -> position.copy(waypointX = -position.waypointX, waypointY = -position.waypointY)
-                270 -> position.copy(waypointX = -position.waypointY, waypointY = position.waypointX)
-                else -> position
+                90, -270 -> position.copy(waypointX = position.waypointY, waypointY = -position.waypointX)
+                180, -180 -> position.copy(waypointX = -position.waypointX, waypointY = -position.waypointY)
+                270, -90 -> position.copy(waypointX = -position.waypointY, waypointY = position.waypointX)
+                else -> throw Exception(degrees.toString())
             }
         }
     )
@@ -67,7 +67,6 @@ class Day12Task2 {
     data class Position(
         val x: Int,
         val y: Int,
-        val dir: Int,
         val waypointX: Int,
         val waypointY: Int,
     )

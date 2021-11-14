@@ -8,7 +8,7 @@ class Day12Task2Test {
     @Test
     fun forward() {
         assertEquals(
-            Day12Task2.Position(100, 10, 90, 10, 1),
+            Day12Task2.Position(100, 10, 10, 1),
             Day12Task2().calculateFinalPosition(listOf("F10"))
         )
     }
@@ -16,7 +16,7 @@ class Day12Task2Test {
     @Test
     fun waypointMovement() {
         assertEquals(
-            Day12Task2.Position(100, 10, 90, 10, 4),
+            Day12Task2.Position(100, 10, 10, 4),
             Day12Task2().calculateFinalPosition(listOf("F10",
                 "N3"))
         )
@@ -25,7 +25,7 @@ class Day12Task2Test {
     @Test
     fun step3() {
         assertEquals(
-            Day12Task2.Position(170, 38, 90, 10, 4),
+            Day12Task2.Position(170, 38, 10, 4),
             Day12Task2().calculateFinalPosition(listOf("F10",
                 "N3",
                 "F7"))
@@ -35,7 +35,7 @@ class Day12Task2Test {
     @Test
     fun step4WithRotation() {
         assertEquals(
-            Day12Task2.Position(170, 38, 90, 4, -10),
+            Day12Task2.Position(170, 38, 4, -10),
             Day12Task2().calculateFinalPosition(listOf("F10",
                 "N3",
                 "F7",
@@ -46,7 +46,7 @@ class Day12Task2Test {
     @Test
     fun step5() {
         assertEquals(
-            Day12Task2.Position(214, -72, 90, 4, -10),
+            Day12Task2.Position(214, -72, 4, -10),
             Day12Task2().calculateFinalPosition(listOf("F10",
                 "N3",
                 "F7",
@@ -62,6 +62,17 @@ class Day12Task2Test {
 
         assertEquals(
             286,
+            Day12Task2().task1(input)
+        )
+    }
+
+    @Test
+    fun task() {
+        val input = File("src/test/resources/task1Day12.txt")
+            .readLines()
+
+        assertEquals(
+            28885,
             Day12Task2().task1(input)
         )
     }
