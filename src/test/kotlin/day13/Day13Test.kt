@@ -25,4 +25,15 @@ class Day13Test {
             Day13().task1(input)
         )
     }
+
+    @Test
+    fun exampleTask2() {
+        val input = "939\n" +
+                "7,13,x,x,59,x,31,19"
+
+        assertEquals(
+            1068781,
+            Day13().task2(input)
+        )
+    }
 }
