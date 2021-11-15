@@ -18,7 +18,7 @@ class Day13 {
     fun task2(input: String): Long {
         val buses = input.lines()[1]
             .split(',')
-            .mapIndexedNotNull { index, s -> if (s == "x") null else index to s.toInt() }
+            .mapIndexedNotNull { index, s -> if (s == "x") null else index to s.toLong() }
 
         var stepSize = buses.first().second
         var time = 0L
