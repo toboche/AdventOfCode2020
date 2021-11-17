@@ -46,7 +46,7 @@ class Day14Test {
         val input = File("src/test/resources/task1Day14.txt").readText()
 
         assertEquals(
-            208L,
+            5272149590143L,
             Day14().task2(input)
         )
     }
