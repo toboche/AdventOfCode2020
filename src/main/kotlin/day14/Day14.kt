@@ -1,7 +1,5 @@
 package day14
 
-import kotlin.streams.toList
-
 class Day14 {
     fun task1(input: String): Long {
         val memory = mutableMapOf<Long, Long>()
@@ -30,15 +28,15 @@ class Day14 {
     }
 
     private fun parseMasks(line: String): Pair<Long, Long> {
-        val mask = line.split("mask = ")[1].chars().toList()
+        val mask = line.substringAfter("mask = ")
         val onesMask =
-            mask.map { if (it == 'X'.code) '0'.code else it }
-                .map { it.toChar() }
+            mask.map { if (it == 'X') '0' else it }
+                .map { it }
                 .joinToString("")
                 .toLong(2)
 
         val zerosMask =
-            mask.map { if (it == 'X'.code) '1'.code else '0'.code }
+            mask.map { if (it == 'X') '1'.code else '0'.code }
                 .map { it.toChar() }
                 .joinToString("")
                 .toLong(2)
