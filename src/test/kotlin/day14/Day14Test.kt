@@ -28,4 +28,26 @@ class Day14Test {
         )
     }
 
+    @Test
+    fun exampleTask2() {
+        val input = "mask = 000000000000000000000000000000X1001X\n" +
+                "mem[42] = 100\n" +
+                "mask = 00000000000000000000000000000000X0XX\n" +
+                "mem[26] = 1"
+
+        assertEquals(
+            208L,
+            Day14().task2(input)
+        )
+    }
+
+    @Test
+    fun task2() {
+        val input = File("src/test/resources/task1Day14.txt").readText()
+
+        assertEquals(
+            208L,
+            Day14().task2(input)
+        )
+    }
 }

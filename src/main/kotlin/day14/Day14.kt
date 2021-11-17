@@ -27,6 +27,44 @@ class Day14 {
         return memory.values.sumOf { it }
     }
 
+    fun task2(input: String): Long {
+        val memory = mutableMapOf<Long, Long>()
+        var mask = ""
+        input.lines()
+            .forEach { line ->
+                if (line.startsWith("mask = ")) {
+                    mask = line.substringAfter("mask = ")
+                } else {
+                    val (addressString, decimalValueString) = Regex("[0-9]+")
+                        .findAll(line)
+                        .toList()
+
+                    val addressInBitString = addressString.value.toInt().toString(2).padStart(36, '0')
+                    val maskedAddressInBitString = mask.mapIndexed { index, maskChar ->
+                        when (maskChar) {
+                            '1', 'X' -> maskChar
+                            '0' -> addressInBitString.getOrElse(index) { '0' }
+                            else -> throw Exception()
+                        }
+                    }.joinToString("")
+                    val floatingXMatchResults = "X".toRegex().findAll(mask).toList()
+                    floatingXMatchResults.runningFold(listOf(maskedAddressInBitString)) { acc, result ->
+                        acc.flatMap {
+                            listOf(
+                                it.replaceRange(result.range, "0"),
+                                it.replaceRange(result.range, "1")
+                            )
+                        }
+                    }
+                        .last()
+                        .forEach { memory[it.toLong(2)] = decimalValueString.value.toLong() }
+                }
+            }
+
+
+        return memory.values.sumOf { it }
+    }
+
     private fun parseMasks(line: String): Pair<Long, Long> {
         val mask = line.substringAfter("mask = ")
         val onesMask =
