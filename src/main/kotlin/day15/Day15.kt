@@ -6,7 +6,7 @@ class Day15 {
         val previousOccurrence: Int?,
     )
 
-    fun task1(input: String): Int {
+    fun task1(input: String, limit: Int = 2020): Int {
         val init = input.split(",")
             .map { it.toInt() }
         var last: Int = -1
@@ -17,7 +17,7 @@ class Day15 {
             .toMap()
             .toMutableMap()
 
-        (previousOccurrences.count() until 2020)
+        (previousOccurrences.count() until limit)
             .forEach { iteration ->
                 if (previousOccurrences.contains(last) && previousOccurrences[last]!!.previousOccurrence != null) {
                     last =

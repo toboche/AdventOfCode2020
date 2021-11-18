@@ -54,4 +54,14 @@ class Day15Test {
         )
     }
 
+    @Test
+    fun task2Example() {
+        val input = "0,3,6"
+
+        assertEquals(
+            175594,
+            Day15().task1(input, 30000000)
+        )
+    }
+
 }
