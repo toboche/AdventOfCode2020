@@ -7,6 +7,16 @@ class Day16 {
 
     fun task1(input: File): Int {
         val readLines = input.readLines()
+        val (rules, tickets, myTicket) = readAllData(readLines)
+        val notMatchingValues = tickets.map { ticket ->
+            ticket.filterNot { ticketValue ->
+                rules.find { rule -> rule.ranges.find { range -> range.contains(ticketValue) } != null } != null
+            }
+        }
+        return notMatchingValues.sumOf { it.sum() }
+    }
+
+    private fun readAllData(readLines: List<String>): Triple<List<Rule>, List<List<Int>>, List<Int>> {
         val rulesEnd = readLines.withIndex().find { it.value.isEmpty() }!!.index
         val myTicketEnd = readLines.withIndex().findLast { it.value.isEmpty() }!!.index
         val rules = readLines.subList(0, rulesEnd)
@@ -21,16 +31,14 @@ class Day16 {
                 Rule(name, ranges)
             }
         val myTicket = readLines.subList(rulesEnd + 2, myTicketEnd)
+            .first()
+            .split(",")
+            .map { it.toInt() }
         val tickets = readLines.subList(myTicketEnd + 2, readLines.size)
             .map {
                 it.split(",")
                     .map { it.toInt() }
             }
-        val notMatchingValues = tickets.map { ticket ->
-            ticket.filterNot { ticketValue ->
-                rules.find { rule -> rule.ranges.find { range -> range.contains(ticketValue) } != null } != null
-            }
-        }
-        return notMatchingValues.sumOf { it.sum() }
+        return Triple(rules, tickets, myTicket)
     }
 }
