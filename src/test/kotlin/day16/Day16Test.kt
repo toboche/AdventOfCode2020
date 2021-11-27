@@ -40,7 +40,7 @@ class Day16Test {
         val input = File("src/test/resources/task1Day16.txt")
 
         assertEquals(
-            29019L,
+            517827547723L,
             Day16().task2(input)
         )
     }
