@@ -25,4 +25,23 @@ class Day16Test {
         )
     }
 
+    @Test
+    fun task2Example() {
+        val input = File("src/test/resources/example2Day16.txt")
+
+        assertEquals(
+            1,
+            Day16().task2(input)
+        )
+    }
+
+    @Test
+    fun task2() {
+        val input = File("src/test/resources/task1Day16.txt")
+
+        assertEquals(
+            29019L,
+            Day16().task2(input)
+        )
+    }
 }
